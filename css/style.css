@@ -1,0 +1,405 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700|Open+Sans+Condensed:300);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  color: #444;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 62.5%;
+  background: #f7f7f7;
+}
+
+
+/* Layout */
+
+
+div.header {
+  background: #fff;
+  padding: 2.5em 5em 0 5em;
+  border-bottom: 0.2em solid #eee;
+}
+
+div.velg_objekttype, div.velg_rad, div.velg_kolonne, div.hva_er, div.brukes_til {
+  float: left;
+  margin: 0 5em 2.5em 0;
+  padding: 0 0 0 55px;
+}
+
+div.velg_objekttype {
+  width: 36em;
+}
+
+div.velg_rad {
+  width: 20em;
+}
+
+div.velg_kolonne {
+  width: 30em;
+  margin-right: 0;
+}
+
+div.hent_resultat {
+  clear: left;
+  margin: 0 0 2.5em 0;
+  padding: 0 0 0 55px;
+}
+
+div.hva_er, div.brukes_til {
+  width: 40em;
+}
+
+
+/* Tekstformatering */
+
+
+h1 {
+  font-size: 4.8em;
+  margin: 0 0 0.5em 0;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 300;
+}
+
+h1 a {
+  color: #444;
+}
+
+h2 {
+  margin: 0 0 0 -55px;
+  font-weight: 300;
+  font-size: 2.4em;
+}
+
+h2 .nr {
+  display: inline-block;
+  background: #58b02c;
+  border: 1px solid #58b02c;
+  border-radius: 18px;
+  width: 36px;
+  height: 36px;
+  margin: 0 17px 10px 0;
+  text-align: center;
+  color: #fff;
+}
+
+h3 {
+  font-weight: 300;
+  font-size: 1.6em;
+  margin: 0 0 0.5em 0;
+}
+
+h3 .valgfritt {
+  color: #58b02c;
+}
+
+p {
+  font-size: 1.6em;
+  line-height: 1.6;
+  margin: 0 0 1em 0;
+}
+
+p.hint {
+  margin: 0.5em 0 1em 0;
+  font-size: 1.2em;
+  color: #999;
+}
+
+p.progress {
+  display: inline-block;
+  visibility: hidden;
+  margin: 0 0 0 1em;
+  width: 12.3em;
+  line-height: 1;
+}
+
+p.progress * {
+  vertical-align: middle;
+}
+
+
+/* Lister */
+
+
+ul {
+  font-size: 1.4em;
+  list-style: none;
+}
+
+ul ul {
+  font-size: 1em;
+}
+
+ul.filterliste {
+  width: 25em;
+  margin: 0.5em 0;
+}
+
+ul.filterliste li {
+  margin: 0 0 0.2em 0;
+}
+
+
+
+.standardrapporter {
+  margin: 0 0 0 25px;
+}
+
+.standardrapporter li {
+  float: left;
+  margin: 25px 0 0 25px;
+}
+
+.standardrapporter a {
+  display: block;
+  width: 128px;
+  padding: 148px 20px 20px 20px;
+  text-align: center;
+  background: #fff url(../gfx/report2.png) no-repeat 20px 20px;
+  border: 2px solid #eee;
+  text-decoration: none;
+  color: #444;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.standardrapporter a:hover {
+  border-color: #ff9600;
+}
+
+dl {
+  font-size: 1.3em;
+}
+
+dt, dd {
+  margin: 0 0 0.3em 0;
+}
+
+dt {
+  float: left;
+  clear: left;
+  font-weight: 700;
+}
+
+dd {
+  margin-left: 120px;
+}
+
+
+/* Skjema */
+
+
+fieldset {
+  border: 0;
+}
+
+select {
+  font-size: 1.4em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 4px;
+}
+
+
+input[type=text] {
+  font-size: 1.4em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  padding: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  font-size: 1.4em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  padding: 6px 10px 6px 10px;
+  color: #fff;
+  border: 1px solid #008ec2;
+  background: #008ec2;
+  cursor: pointer;
+}
+
+button.hent {
+  padding: 10px 20px 10px 20px;
+  font-size: 1.4em;
+  font-weight: 700;
+  border-radius: 18px;
+}
+
+button.eksporter {
+  padding: 10px 20px 10px 50px;
+  font-size: 1.4em;
+  font-weight: 700;
+  border: 0;
+  background: #fff url(../gfx/excel.png) no-repeat;
+  color: #008ec2;
+}
+
+button.eksporter:hover {
+  color: #ff9600;
+  background-color: #fff;
+}
+
+button:hover {
+  background-color: #ff9600;
+  border-color: #ff9600;
+}
+
+ul button {
+  float: right;
+  font-size: 1em;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #008ec2;
+}
+
+ul button:hover {
+  background: none;
+  color: #ff9600;
+}
+
+label {
+  cursor: pointer;
+}
+
+#objekttype {width: 25em;}
+#ef-egenskapstype {width: 25em;}
+#ef-operator {width: 3.5em;}
+#ef-verdi {width: 12.5em;}
+select#ef-verdi {width: 13.5em;}
+#kolonne {width: 21em;}
+#intervall {width: 15em;}
+
+/* Tabeller */
+
+
+table {
+  border-collapse: collapse;
+  margin: 5em;
+}
+
+caption {
+  caption-side: bottom;
+  text-align: left;
+  padding: 20px 15px 10px 15px;
+  background: #f0f0f0;
+}
+
+tr.rad2 td.tittel { 
+  font-weight: 400;
+}
+
+tr.kolonneoverskrift th {
+  border-bottom: 0;
+  text-align: center;
+  padding-bottom: 0;
+  font-weight: 400;
+}
+
+tr.sumrad td {
+  font-weight: 700;
+}
+
+td, th {
+  padding: 10px 15px;
+  border-bottom: 2px solid #f7f7f7;
+
+}
+
+th {
+  color: #fff;
+  background: #58b02c;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+th.radoverskrift {
+  font-weight: 400;
+  text-align: left;
+}
+
+td {
+  background: #fff;
+  font-size: 13px;
+  text-align: right;
+}
+
+td.tittel {
+  font-weight: 700;
+  text-align: left;
+}
+
+
+
+/* Radfilter */
+
+.radfilter_set, .radfilter_nullstill {
+  cursor: pointer;
+}
+
+.radfilter_fjern {
+  visibility: hidden;
+  display: inline-block;
+  margin: 0 0 0 10px;
+  cursor: pointer;
+  font-weight: 400;
+  color: #999;
+}
+
+.radfilter_fjern:hover {
+  color: #444;
+}
+
+td:hover .radfilter_fjern {
+  visibility: visible;
+}
+
+
+/* Annet */
+
+
+.statuslinje {
+  clear: left;
+  width: 100%;
+  background: #ff9600;
+}
+
+#status-gfx {
+  height: 2px;
+  width: 0px;
+  background: #58b02c;
+}
+
+
+a {
+  color: #008ec2;
+  text-decoration: none;
+}
+
+a.button {
+  display: inline-block;
+  margin: 0 1em 0 0;
+  padding: 7px 10px 7px 10px;
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid #008ec2;
+  border-radius: 7px;
+  background: #008ec2;
+}
+
+a.button:hover {
+  background: #ff9600;
+  border-color: #ff9600;
+}
