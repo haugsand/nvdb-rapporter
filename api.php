@@ -3,9 +3,14 @@
 function getData($path) {
     $path = str_replace("#", "%23", $path);
     $path = str_replace("+", "%2B", $path);
+    $path = str_replace("Æ", "%C3%86", $path);
+    $path = str_replace("æ", "%C3%A6", $path);
+    $path = str_replace("Ø", "%C3%98", $path);
+    $path = str_replace("ø", "%C3%B8", $path);
     $path = str_replace("Å", "%C3%85", $path);
+    $path = str_replace("å", "%C3%A5", $path);
     $url = 'https://www.vegvesen.no/nvdb/api'.$path;
-    // echo($url);
+
     $options = array(
         'http'=>array(
         'method'=>"GET",
