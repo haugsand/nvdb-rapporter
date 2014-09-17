@@ -77,6 +77,13 @@
         var verdier = $scope.a.intervall.split(' ');
         $scope.valg[$scope.a.kolonne].verdier = [];
         
+        // Endrer desimalskille fra komma til punktum
+        for (var i = 0; i < verdier.length; i++) {
+            verdier[i] = verdier[i].replace(',', '.');
+        }
+        
+        console.log(verdier);
+        
         $scope.valg[$scope.a.kolonne].verdier.push({'navn': '< '+verdier[0], 'verdi': [null, verdier[0]]})
         for (var i = 1; i < verdier.length; i++) {
             $scope.valg[$scope.a.kolonne].verdier.push({'navn': verdier[i-1]+' - '+verdier[i], 'verdi': [verdier[i-1], verdier[i]]})
