@@ -11,7 +11,7 @@
     $scope.ef.operatorer.ENUM = ['=', '!='];
     $scope.ef.operatorer.Tall = ['=', '!=', '<=', '>='];
     $scope.ef.operatorer.Tekst = ['=', '!='];
-    $scope.ef.operatorer.Dato = ['=', '!='];
+    $scope.ef.operatorer.Dato = ['=', '!=', '<=', '>='];
 
     $scope.ef.filter = function(egenskapstype){
         return egenskapstype.datatype == 'ENUM' || egenskapstype.datatype == 'Tall' || egenskapstype.datatype == 'Tekst' || egenskapstype.datatype == 'Dato';
