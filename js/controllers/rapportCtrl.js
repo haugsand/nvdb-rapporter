@@ -118,12 +118,7 @@
     $scope.nullstillRadfilter = function() {
         $scope.a.radfilter = [];
     };
-    
-    /*
-    $scope.getResultat = function(sum) {
-        resultat.get(sum);
-    }
-    */
+
     
     $scope.eksportExcel = function() {
         var celler = document.querySelectorAll("[class='radfilter_fjern']");
@@ -150,7 +145,8 @@ var tableToExcel = (function() {
   }
 })()
 
-    
+
+
 
     /* ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- */
     /*      Nullstiller tabell                                          */

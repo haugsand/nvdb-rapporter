@@ -20,10 +20,10 @@
                     <option ng-repeat="egenskapstype in egenskapstyper[a.objekttype] | filter:ef.filter">{{egenskapstype.navn}}</option>
                 </select>
                 
-                <select ng-if="ef.type" ng-model="ef.operator" id="ef-operator">
+                <select ng-if="ef.type" ng-model="ef.operator" ng-change="setOperator()" id="ef-operator">
                     <option ng-repeat="operator in ef.operatorer[ef.type]">{{operator}}</option>
                 </select>
-                
+
                 <ng-switch on="ef.type">
                     <input ng-switch-when="Tekst" ng-model="ef.verdi" type="text" placeholder="Skriv inn tekst" id="ef-verdi">
                     <input ng-switch-when="Tall" ng-model="ef.verdi" type="text" placeholder="Skriv inn tall" id="ef-verdi" smart-float>
@@ -33,8 +33,10 @@
                         <option ng-repeat="verdi in valg[a.objekttype+': '+ef.egenskapstype].verdier">{{verdi.navn}}</option>
                     </select>
                 </ng-switch>
+                   
                 
                 <button ng-if="ef.verdi" ng-click="addEgenskapsfilter()">Legg til filter</button>
+                
                 
                 <ul class="filterliste">
                     <li ng-repeat="filter in a.egenskapsfilter">{{filter.type}} {{filter.operator}} {{filter.verdi}} 

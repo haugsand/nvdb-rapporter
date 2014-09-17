@@ -8,10 +8,10 @@
     
     // Config av datatyper og operatorer
     $scope.ef.operatorer = {};
-    $scope.ef.operatorer.ENUM = ['=', '!='];
-    $scope.ef.operatorer.Tall = ['=', '!=', '<=', '>='];
-    $scope.ef.operatorer.Tekst = ['=', '!='];
-    $scope.ef.operatorer.Dato = ['=', '!=', '<=', '>='];
+    $scope.ef.operatorer.ENUM = ['=', '!=', 'Har verdi', 'Har ingen verdi'];
+    $scope.ef.operatorer.Tall = ['=', '!=', '<=', '>=', 'Har verdi', 'Har ingen verdi'];
+    $scope.ef.operatorer.Tekst = ['=', '!=', 'Har verdi', 'Har ingen verdi'];
+    $scope.ef.operatorer.Dato = ['=', '!=', '<=', '>=', 'Har verdi', 'Har ingen verdi'];
 
     $scope.ef.filter = function(egenskapstype){
         return egenskapstype.datatype == 'ENUM' || egenskapstype.datatype == 'Tall' || egenskapstype.datatype == 'Tekst' || egenskapstype.datatype == 'Dato';
@@ -35,6 +35,14 @@
         $scope.ef.operator = '=';
         $scope.ef.verdi = '';
     };
+    
+    // Ved endring av operator
+    $scope.setOperator = function () {
+        console.log($scope.ef.operator);
+        if ($scope.ef.operator == 'Har verdi' || $scope.ef.operator == 'Har ingen verdi') {
+            $scope.addEgenskapsfilter();
+        }
+    }
     
     // Legger til et egenskapsfilter
     $scope.addEgenskapsfilter = function() {
@@ -68,10 +76,25 @@
                 }
             }
         } else {
+        
+            var filter_operator = $scope.ef.operator;
+            var filter_verdi = $scope.ef.verdi;
+            
+            switch ($scope.ef.operator) {
+                case 'Har verdi':
+                    filter_operator = '!=';
+                    filter_verdi = null;
+                    break;
+                case 'Har ingen verdi':
+                    filter_operator = '=';
+                    filter_verdi = null;
+                    break;
+            }
+            
             var filter = {
                 'type': $scope.ef.egenskapstype,
-                'operator': $scope.ef.operator,
-                'verdi': [$scope.ef.verdi]
+                'operator': filter_operator,
+                'verdi': [filter_verdi]
             };
             $scope.a.egenskapsfilter.push(filter);
         }
