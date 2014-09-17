@@ -26,7 +26,7 @@
                 
                 <ng-switch on="ef.type">
                     <input ng-switch-when="Tekst" ng-model="ef.verdi" type="text" placeholder="Skriv inn tekst" id="ef-verdi">
-                    <input ng-switch-when="Tall" ng-model="ef.verdi" type="text" placeholder="Skriv inn tall" id="ef-verdi">
+                    <input ng-switch-when="Tall" ng-model="ef.verdi" type="text" placeholder="Skriv inn tall" id="ef-verdi" smart-float>
                     <input ng-switch-when="Dato" ng-model="ef.verdi" type="text" placeholder="YYYY-MM-DD" id="ef-verdi">
                     <select ng-switch-when="ENUM" ng-model="ef.verdi" id="ef-verdi">
                         <option value="">Velg verdi</option>
