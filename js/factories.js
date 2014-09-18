@@ -8,7 +8,8 @@
                 $rootScope.egenskapstyper[objekttype] = [];
                 
                 var id = $rootScope.objekttyper[objekttype].id;
-                $http.get(nvdbapi+'/datakatalog/objekttyper/'+id+'.json').success(function(data) {                    
+                
+                var promise = $http.get(nvdbapi+'/datakatalog/objekttyper/'+id+'.json').success(function(data) {                    
 
                     for (var i in data.egenskapsTyper) {
                         var egenskapstype = data.egenskapsTyper[i];
@@ -39,6 +40,7 @@
                         }
                     }
                 });
+                return promise;
             }
         },
         

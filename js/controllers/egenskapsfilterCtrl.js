@@ -38,7 +38,6 @@
     
     // Ved endring av operator
     $scope.setOperator = function () {
-        console.log($scope.ef.operator);
         if ($scope.ef.operator == 'Har verdi' || $scope.ef.operator == 'Har ingen verdi') {
             $scope.addEgenskapsfilter();
         }

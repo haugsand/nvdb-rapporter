@@ -31,7 +31,6 @@
     
     if ($location.search().objekttype) {
         $scope.a.objekttype = $location.search().objekttype;
-        // getdata.egenskapstyper($scope.a.objekttype);
     }
 
     if ($location.search().egenskapsfilter) {
@@ -44,11 +43,13 @@
     
     if ($location.search().intervall) {
         $scope.a.intervall = $location.search().intervall;
-        // $scope.setIntervall(); // Noe feil med denne, vet ikke hva
     }
      
     getdata.objekttyper().then(function(promise) {
-        getdata.egenskapstyper($scope.a.objekttype);
+        getdata.egenskapstyper($scope.a.objekttype).then(function(promise) {
+           console.log('Done'); 
+           $scope.setIntervall();
+        });
     });
 
     
@@ -81,8 +82,6 @@
         for (var i = 0; i < verdier.length; i++) {
             verdier[i] = verdier[i].replace(',', '.');
         }
-        
-        console.log(verdier);
         
         $scope.valg[$scope.a.kolonne].verdier.push({'navn': '< '+verdier[0], 'verdi': [null, verdier[0]]})
         for (var i = 1; i < verdier.length; i++) {
