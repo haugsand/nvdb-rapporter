@@ -22,7 +22,7 @@
                 <h3><label for="ef-egenskapstype">Legg til egenskapsfilter</label> <span class="valgfritt">(valgfritt)</span></h3>
                 <select ng-model="ef.egenskapstype" ng-change="setEgenskapstype()" id="ef-egenskapstype">
                     <option>Velg egenskapstype</option>
-                    <option ng-repeat="egenskapstype in egenskapstyper[a.objekttype] | filter:ef.filter">{{egenskapstype.navn}}</option>
+                    <option ng-repeat="egenskapstype in egenskapstyper[a.objekttype] | filter:ef.filter | orderBy:'navn'">{{egenskapstype.navn}}</option>
                 </select>
                 
                 <select ng-if="ef.type" ng-model="ef.operator" ng-change="setOperator()" id="ef-operator">
@@ -73,7 +73,7 @@
             <h2><span class="nr">3</span><label for="kolonne">Velg kolonne</label></h2>
             <select id="kolonne" ng-model="a.kolonne" ng-change="setKolonne()">
                 <option ng-repeat="kolonne in kolonner">{{kolonne}}</option> 
-                <option ng-repeat="egenskapstype in egenskapstyper[a.objekttype] | filter:kolonnefilter">{{a.objekttype}}: {{egenskapstype.navn}}</option>
+                <option ng-repeat="egenskapstype in egenskapstyper[a.objekttype] | filter:kolonnefilter | orderBy:'navn'">{{a.objekttype}}: {{egenskapstype.navn}}</option>
             </select>
             <p class="hint">Bestem inndeling av tabellen.</p>
             <div ng-if="valg[a.kolonne].type == 'Tall'">
