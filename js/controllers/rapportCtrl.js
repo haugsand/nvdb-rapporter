@@ -7,6 +7,7 @@
     $scope.a.rad = "Fylke";
     $scope.a.rad2 = false;
     $scope.a.sum = "antallFunnet";
+    $scope.a.intervall = [];
     $scope.a.egenskapsfilter = [];
     $scope.a.radfilter = [];
     $scope.ef = {};
@@ -44,11 +45,15 @@
     if ($location.search().intervall) {
         $scope.a.intervall = $location.search().intervall;
     }
-     
+    
+
     getdata.objekttyper().then(function(promise) {
         getdata.egenskapstyper($scope.a.objekttype).then(function(promise) {
-           console.log('Done'); 
-           $scope.setIntervall();
+        /* Deaktivert, denne er for aggressiv
+            if ($location.search().intervall) {
+                $scope.setIntervall();
+            }
+            */
         });
     });
 
@@ -85,9 +90,10 @@
         
         $scope.valg[$scope.a.kolonne].verdier.push({'navn': '< '+verdier[0], 'verdi': [null, verdier[0]]})
         for (var i = 1; i < verdier.length; i++) {
-            $scope.valg[$scope.a.kolonne].verdier.push({'navn': verdier[i-1]+' - '+verdier[i], 'verdi': [verdier[i-1], verdier[i]]})
+            $scope.valg[$scope.a.kolonne].verdier.push({'navn': verdier[i-1]+' - '+verdier[i], 'verdi': [verdier[i-1], verdier[i]]});
         }
-        $scope.valg[$scope.a.kolonne].verdier.push({'navn': verdier[verdier.length-1]+' ≤', 'verdi': [verdier[verdier.length-1], null]})
+        $scope.valg[$scope.a.kolonne].verdier.push({'navn': verdier[verdier.length-1]+' ≤', 'verdi': [verdier[verdier.length-1], null]});
+        // $scope.valg[$scope.a.kolonne].verdier.push({'navn': 'Ingen verdi', 'verdi': [null]});
     };
     
     // Ved endring av aktiv rad
