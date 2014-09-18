@@ -126,26 +126,37 @@
         for (var i = 0; i < celler.length; i++) {
             celler[i].innerHTML = '';
         }
-        tableToExcel('rapport', 'Rapport fra NVDB');
+        tableToExcel();
         
         for (var i = 0; i < celler.length; i++) {
             celler[i].innerHTML = 'fjern';
         }
     };
     
-var tableToExcel = (function() {
-  var uri = 'data:application/vnd.ms-excel;base64,'
-    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>'
-    , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
-    , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
-  return function(table, name) {
-    if (!table.nodeType) table = document.getElementById(table)
-    var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
-    window.location.href = uri + base64(format(template, ctx))
-  }
-})()
-
-
+    var tableToExcel = (function() {
+        var uri = 'data:application/vnd.ms-excel;base64,';
+      
+        var template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">';
+        template += '<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
+        template += '<x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>';
+        template += '</x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->';
+        template += '<meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head>';
+        template += '<body><table>{table}</table></body></html>';;
+      
+        var base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) };
+        var format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) };
+                
+      
+        return function(table, name, ctx) {
+            var table = document.getElementById('rapport');
+            var name = 'Rapport fra NVDB';
+            var ctx = {
+                worksheet: name, 
+                table: table.innerHTML
+            };
+            window.location.href = uri + base64(format(template, ctx));
+        }
+    })()
 
 
     /* ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- */
