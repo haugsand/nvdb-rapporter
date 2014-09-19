@@ -15,7 +15,7 @@
         },
         {
             'tittel': 'Elgskilt i NT',
-            'url': '#!/rapport?objekttype=Skiltplate&rad=Fylke&rad2&kolonne=Vegkategori&egenskapsfilter=%5B%7B%22type%22:%22Skiltnummer%20HB-050%22,%22operator%22:%22%3D%22,%22verdi%22:%5B%22146.1%20-%20Elg%22%5D%7D%5D&radfilter=%C3%98STFOLD,AKERSHUS,OSLO,HEDMARK,OPPLAND,BUSKERUD,VESTFOLD,TELEMARK,AUST-AGDER,VEST-AGDER,ROGALAND,HORDALAND,SOGN%20OG%20FJORDANE,M%C3%98RE%20OG%20ROMSDAL,S%C3%98R-TR%C3%98NDELAG,NORDLAND,TROMS,FINNMARK'
+            'url': '#!/rapport?objekttype=Skiltplate&rad=Fylke&rad2&kolonne=Vegkategori&egenskapsfilter=%5B%7B%22type%22:%22Skiltnummer%22,%22operator%22:%22%3D%22,%22verdi%22:%5B%22146.1%20-%20Elg%22%5D%7D%5D&radfilter=%C3%98STFOLD,AKERSHUS,OSLO,HEDMARK,OPPLAND,BUSKERUD,VESTFOLD,TELEMARK,AUST-AGDER,VEST-AGDER,ROGALAND,HORDALAND,SOGN%20OG%20FJORDANE,M%C3%98RE%20OG%20ROMSDAL,S%C3%98R-TR%C3%98NDELAG,NORDLAND,TROMS,FINNMARK'
         },
         {
             'tittel': 'Tunneler',
