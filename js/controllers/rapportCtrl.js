@@ -49,11 +49,9 @@
 
     getdata.objekttyper().then(function(promise) {
         getdata.egenskapstyper($scope.a.objekttype).then(function(promise) {
-        /* Deaktivert, denne er for aggressiv
             if ($location.search().intervall) {
                 $scope.setIntervall();
             }
-            */
         });
     });
 
