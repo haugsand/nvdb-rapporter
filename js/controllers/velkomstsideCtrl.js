@@ -3,7 +3,7 @@
     $scope.standardrapporter = [
         {
             'tittel': 'Veglengder',
-            'url': '#!/rapport?objekttype=Vegreferanse&rad=Fylke&rad2=false&kolonne=Vegkategori&egenskapsfilter=%5B%7B%22type%22:%22Vegtype%22,%22operator%22:%22!%3D%22,%22verdi%22:%5B%22Fiktiv%22%5D%7D,%7B%22type%22:%22Envegsregulering%22,%22operator%22:%22!%3D%22,%22verdi%22:%5B%22Enveg%20Mot%22%5D%7D%5D&radfilter='
+            'url': '#!/rapport?objekttype=Vegreferanse&rad=Fylke&rad2=false&kolonne=Vegkategori&egenskapsfilter=%5B%7B%22type%22:%22Vegtype%22,%22operator%22:%22!%3D%22,%22verdi%22:%5B%22Fiktiv%22%5D%7D,%7B%22type%22:%22Envegsregulering%22,%22operator%22:%22!%3D%22,%22verdi%22:%5B%22Enveg%20Mot%22%5D%7D,%7B%22type%22:%22Vegstatus%22,%22operator%22:%22%3D%22,%22verdi%22:%5B%22Eksisterende%20veg%22%5D%7D%5D&radfilter='
         },
         {
             'tittel': 'Vegbredde',
