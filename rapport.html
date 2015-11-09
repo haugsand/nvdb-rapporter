@@ -25,21 +25,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr bindonce ng-repeat-start="rad in valg[a.rad].verdier | radfilter:a.radfilter">
-                <td class="tittel"><span ng-click="setRadfilter(rad.navn)" title="Vis kun denne raden" class="radfilter_set">{{rad.navn}}</span>
+            <tr ng-repeat-start="rad in valg[a.rad].verdier | radfilter:a.radfilter">
+                <td class="tittel"><span ng-click="setRadfilter(rad.navn)" title="Vis kun denne raden" class="radfilter_set">{{::rad.navn}}</span>
                 <span ng-click="addRadfilter(rad.navn)" class="radfilter_fjern" title="Fjern denne raden">fjern</span></td>
-                <td bindonce ng-repeat="kolonne in valg[a.kolonne].verdier" bo-title="rad.verdi+kolonne.verdi" class="resultat"></td>
-                <td bo-title="rad.verdi+'sum'" class="resultat"></td>
+                <td ng-repeat="kolonne in valg[a.kolonne].verdier" title="{{::rad.verdi[0]}}{{::kolonne.verdi[0]}}" class="resultat"></td>
+                <td title="{{::rad.verdi[0]}}sum" class="resultat"></td>
             </tr>
-                <tr bindonce ng-repeat="rad2 in valg[rad.navn].verdier" ng-if="a.rad2==true" class="rad2">
-                    <td class="tittel">{{rad2.navn}}</td>
-                    <td bindonce ng-repeat="kolonne in valg[a.kolonne].verdier" bo-title="rad.verdi+rad2.navn+kolonne.verdi" class="resultat"></td>
-                    <td bo-title="rad.verdi+rad2.navn+'sum'" class="resultat"></td>
+                <tr ng-repeat="rad2 in valg[rad.navn].verdier" ng-if="a.rad2==true" class="rad2">
+                    <td class="tittel">{{::rad2.navn}}</td>
+                    <td ng-repeat="kolonne in valg[a.kolonne].verdier" title="{{::rad.verdi[0]}}{{::rad2.navn}}{{::kolonne.verdi[0]}}" class="resultat"></td>
+                    <td title="{{::rad.verdi[0]}}{{::rad2.navn}}sum" class="resultat"></td>
                 </tr>
             <tr ng-repeat-end ng-if="usynlig"></tr>
             <tr class="sumrad">
                 <td class="tittel">Sum hele landet</td>
-                <td bindonce ng-repeat="kolonne in valg[a.kolonne].verdier" bo-title="'sum'+kolonne.verdi" class="resultat"></td>
+                <td ng-repeat="kolonne in valg[a.kolonne].verdier" title="sum{{::kolonne.verdi[0]}}" class="resultat"></td>
                 <td title="sumsum" class="resultat"></td>
             </tr>
         </tbody>
