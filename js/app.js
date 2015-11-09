@@ -1,4 +1,4 @@
-﻿var app = angular.module('rapportgenerator', ['ngRoute', 'pasvaz.bindonce']);
+﻿var app = angular.module('rapportgenerator', ['ngRoute']);
 
 
 app.config(['$httpProvider', function ($httpProvider) {
