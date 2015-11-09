@@ -98,16 +98,15 @@
                         'egenskap': 'vegreferanse',
                         'verdier': []
                     };
+
                     for (k in vegstatus) {
-                        // API støtter ikke vegstatus x og b.
-                        if (!(vegstatus[k].kortVerdi == 'X' || vegstatus[k].kortVerdi == 'B')){
-                            $rootScope.valg[vegkategori[j].verdi].verdier.push({
-                                'navn': vegstatus[k].verdi,
-                                'verdi': [vegkategori[j].kortVerdi+vegstatus[k].kortVerdi]
-                            });
-                        }
+                        $rootScope.valg[vegkategori[j].verdi].verdier.push({
+                            'navn': vegstatus[k].verdi,
+                            'verdi': [vegkategori[j].kortVerdi+vegstatus[k].kortVerdi]
+                        });
 
                     }
+
                 }
             });
         },
