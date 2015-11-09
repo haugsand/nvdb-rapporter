@@ -51,16 +51,19 @@
                 for (var i = 0; i < data.vegObjektTyper.length; i++) {
                     var objekttype = data.vegObjektTyper[i];
                     
+                    if (objekttype.geometriType == 'LINJE') {
+                        var lengde = true;
+                    } else {
+                        var lengde = false;
+                    }
+                    
                     $rootScope.objekttyper[objekttype.navn] = {
                         'navn': objekttype.navn,
-                        'id': objekttype.id
+                        'id': objekttype.id,
+                        'lengde': lengde
                     };
                     
-                    if (objekttype.geometriType == 'LINJE') {
-                        $rootScope.objekttyper[objekttype.navn].lengde = true;
-                    } else {
-                        $rootScope.objekttyper[objekttype.navn].lengde = false;
-                    }
+
                 }
 
             });

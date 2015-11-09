@@ -11,7 +11,7 @@
         <div class="velg_objekttype">
             <h2><span class="nr">1</span><label for="objekttype">Velg objekttype</label></h2>
             <select id="objekttype" ng-model="a.objekttype" ng-change="setObjekttype()">
-                <option ng-repeat="objekttype in objekttyper">{{objekttype.navn}}</option>
+                <option ng-repeat="objekttype in objekttyper | orderBy:'navn'">{{objekttype.navn}}</option>
             </select>
             <p class="hint">Hva vil du ha informasjon om?</p>
             

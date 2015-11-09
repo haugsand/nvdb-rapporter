@@ -49,7 +49,7 @@
 
     getdata.objekttyper().then(function(promise) {
         getdata.egenskapstyper($scope.a.objekttype).then(function(promise) {
-            if ($location.search().intervall) {
+            if ($location.search().intervall.length > 0) {
                 $scope.setIntervall();
             }
         });
