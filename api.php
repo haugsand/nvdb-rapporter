@@ -14,6 +14,7 @@ function getData($path) {
     $options = array(
         'http'=>array(
         'method'=>"GET",
+        'X-Client'=>"NVDB Rapporter",
         'header'=>"Accept: application/vnd.vegvesen.nvdb-v1+json"
         )
     );

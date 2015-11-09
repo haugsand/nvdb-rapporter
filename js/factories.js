@@ -9,7 +9,7 @@
                 
                 var id = $rootScope.objekttyper[objekttype].id;
                 
-                var promise = $http.get(nvdbapi+'/datakatalog/objekttyper/'+id+'.json').success(function(data) {                    
+                var promise = $http.get(nvdbapi+'/datakatalog/objekttyper/'+id).success(function(data) {                    
 
                     for (var i in data.egenskapsTyper) {
                         var egenskapstype = data.egenskapsTyper[i];
@@ -46,7 +46,7 @@
         
         
         objekttyper: function() {
-            var promise = $http.get(nvdbapi+'/datakatalog/objekttyper.json').success(function(data) {
+            var promise = $http.get(nvdbapi+'/datakatalog/objekttyper').success(function(data) {
             
                 for (var i = 0; i < data.vegObjektTyper.length; i++) {
                     var objekttype = data.vegObjektTyper[i];
@@ -69,7 +69,7 @@
         
         
         vegreferanse: function() {
-            $http.get(nvdbapi+'/datakatalog/objekttyper/532.json').success(function(data) {
+            $http.get(nvdbapi+'/datakatalog/objekttyper/532').success(function(data) {
             
                 $rootScope.valg.Vegkategori = {
                     'type': 'lokasjon',
@@ -121,7 +121,7 @@
                 'verdier': []
             };
             
-            $http.get(nvdbapi+'/omrader/regioner.json').success(function(data) {
+            $http.get(nvdbapi+'/omrader/regioner').success(function(data) {
 
                 for (var i = 0; i < data['regioner'].length; i++) {
                     var omrade = data['regioner'][i];
@@ -136,6 +136,8 @@
                         'verdier': []
                     };
                 }
+                
+                // Koblingstabell mellom regioner og fylker
                 $rootScope.valg['ØST'].verdier = [
                     {'navn': "\u00d8stfold", 'verdi': [1]},
                     {'navn': "Akershus", 'verdi': [2]},
@@ -185,7 +187,7 @@
             // koblingstabell[Fylkesnr] = Fylkesnavn
             $rootScope.koblingstabell = {};
             
-            var promise = $http.get(nvdbapi+'/omrader/fylker.json').success(function(data) {
+            var promise = $http.get(nvdbapi+'/omrader/fylker').success(function(data) {
                 for (var i = 0; i < data['fylker'].length; i++) {
                     var omrade = data['fylker'][i];
                     $rootScope.valg.Fylke.verdier.push({
@@ -214,7 +216,7 @@
                 'verdier': []
             };
             
-            $http.get(nvdbapi+'/omrader/kommuner.json').success(function(data) {
+            $http.get(nvdbapi+'/omrader/kommuner').success(function(data) {
 
                 for (var i = 0; i < data['kommuner'].length; i++) {
                     var omrade = data['kommuner'][i];
