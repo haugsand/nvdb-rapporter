@@ -339,7 +339,7 @@
     
     function getSok (sokeobjekt, key) {
     
-        var url = 'api.php?path=/sok.json?kriterie='+angular.toJson(sokeobjekt);
+        var url = 'api.php?path=/sok?kriterie='+angular.toJson(sokeobjekt);
         
         url = url.replace(/#/g, '%23');
         url = url.replace(/\+/g, '%2B');
