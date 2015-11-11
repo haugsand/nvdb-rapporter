@@ -1,4 +1,4 @@
-﻿app.factory('getdata', ['$rootScope', '$http', 'nvdbapi', function($rootScope, $http, nvdbapi) {
+﻿app.factory('getdata', ['$rootScope', '$http', 'nvdbapi', 'vegobjekttyper', function($rootScope, $http, nvdbapi, vegobjekttyper) {
     
     return {
         egenskapstyper: function(objekttype) {
@@ -7,7 +7,7 @@
             
                 $rootScope.egenskapstyper[objekttype] = [];
                 
-                var id = $rootScope.objekttyper[objekttype].id;
+                var id = vegobjekttyper[objekttype].id;
                 
                 var promise = $http.get(nvdbapi+'/datakatalog/objekttyper/'+id).success(function(data) {                    
 
@@ -57,7 +57,7 @@
                         var lengde = false;
                     }
                     
-                    $rootScope.objekttyper[objekttype.navn] = {
+                    vegobjekttyper[objekttype.navn] = {
                         'navn': objekttype.navn,
                         'id': objekttype.id,
                         'lengde': lengde

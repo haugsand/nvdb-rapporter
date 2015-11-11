@@ -1,16 +1,11 @@
-﻿app.controller("rapportCtrl", ['$scope', '$http', '$location', 'getdata', 'aktiv', function ($scope, $http, $location, getdata, aktiv) {
+﻿app.controller("rapportCtrl", ['$scope', '$http', '$location', 'getdata', 'aktiv', 'vegobjekttyper', function ($scope, $http, $location, getdata, aktiv, vegobjekttyper) {
 
-    console.log(aktiv);
-    
+   
     // Henter standarverdier
     $scope.a = aktiv;
-    
-    console.log($scope.a);
-    
-    // Standarverdier 
-
     $scope.ef = {};
     $scope.dato = new Date().toLocaleDateString();
+    $scope.objekttyper = vegobjekttyper;
     
     
     

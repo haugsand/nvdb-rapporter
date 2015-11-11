@@ -19,7 +19,6 @@ app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
         when('/rapport', {
             templateUrl: 'rapportoppsett.html',
-            controller: 'rapportCtrl',
             reloadOnSearch: false
         }).
         otherwise({
@@ -41,10 +40,11 @@ app.value('aktiv', {
     'radfilter': []
 });
 
+app.value('vegobjekttyper', {});
+
 
 app.run(['$rootScope', 'getdata', function($rootScope, getdata) {
 
-    $rootScope.objekttyper = {};
     $rootScope.egenskapstyper = {};
     $rootScope.valg = {};
     
