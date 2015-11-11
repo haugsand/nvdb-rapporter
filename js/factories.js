@@ -235,13 +235,12 @@
                         'verdi': [omrade.nummer]
                     });
                     
-                    // Siden Oslo ikke finnes
-                    if (fylkesnr != 3) {
-                        $rootScope.valg[$rootScope.koblingstabell[fylkesnr]].verdier.push({
-                            'navn': omrade.navn,
-                            'verdi': [omrade.nummer]
-                        });
-                    }
+
+                    $rootScope.valg[$rootScope.koblingstabell[fylkesnr]].verdier.push({
+                        'navn': omrade.navn,
+                        'verdi': [omrade.nummer]
+                    });
+
  
                 }
                 $rootScope.valg.Kommune.verdier.sort(function(a, b) {
