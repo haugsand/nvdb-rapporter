@@ -30,6 +30,17 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.constant('nvdbapi', 'api.php?path=');
 
+app.value('aktiv', {
+    'objekttype': "Rekkverk",
+    'kolonne': "Vegkategori",
+    'rad': "Fylke",
+    'rad2': false,
+    'sum': "antallFunnet",
+    'intervall': [],
+    'egenskapsfilter': [],
+    'radfilter': []
+});
+
 
 app.run(['$rootScope', 'getdata', function($rootScope, getdata) {
 

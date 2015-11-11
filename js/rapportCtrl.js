@@ -1,17 +1,18 @@
-﻿app.controller("rapportCtrl", ['$scope', '$http', '$location', 'getdata', function ($scope, $http, $location, getdata) {
+﻿app.controller("rapportCtrl", ['$scope', '$http', '$location', 'getdata', 'aktiv', function ($scope, $http, $location, getdata, aktiv) {
 
+    console.log(aktiv);
+    
+    // Henter standarverdier
+    $scope.a = aktiv;
+    
+    console.log($scope.a);
+    
     // Standarverdier 
-    $scope.a = {};
-    $scope.a.objekttype = "Rekkverk";
-    $scope.a.kolonne = "Vegkategori";
-    $scope.a.rad = "Fylke";
-    $scope.a.rad2 = false;
-    $scope.a.sum = "antallFunnet";
-    $scope.a.intervall = [];
-    $scope.a.egenskapsfilter = [];
-    $scope.a.radfilter = [];
+
     $scope.ef = {};
-    $scope.dato = new Date().toLocaleDateString();;
+    $scope.dato = new Date().toLocaleDateString();
+    
+    
     
 
     // Konfigurasjon av mulige rad- og kolonnevalg
