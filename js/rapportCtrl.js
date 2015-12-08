@@ -26,6 +26,7 @@
         }
     }
     
+    // Location gjøres om til scope kun når controlleren lastes. Derfor fungerer ikke linkene lenger
     if ($location.search().objekttype) {
         $scope.a.objekttype = $location.search().objekttype;
     }
@@ -46,7 +47,8 @@
     getdata.objekttyper().then(function(promise) {
         getdata.egenskapstyper($scope.a.objekttype).then(function(promise) {
             if ($location.search().intervall.length > 0) {
-                $scope.setIntervall();
+                // Deaktiveres inntil videre fordi den setter intervall uansett hvilken kolonne som er valgt
+                // $scope.setIntervall();
             }
         });
     });

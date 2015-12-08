@@ -141,6 +141,7 @@
                 }
                 
                 // Koblingstabell mellom regioner og fylker
+                // Denne kan fjernes når NVDB API v2 benyttes
                 $rootScope.valg['ØST'].verdier = [
                     {'navn': "\u00d8stfold", 'verdi': [1]},
                     {'navn': "Akershus", 'verdi': [2]},
@@ -235,7 +236,7 @@
                         'verdi': [omrade.nummer]
                     });
                     
-
+                    // Om denne skrives om, er ikke lasting av kommuner avhengig av lasting av fylker
                     $rootScope.valg[$rootScope.koblingstabell[fylkesnr]].verdier.push({
                         'navn': omrade.navn,
                         'verdi': [omrade.nummer]

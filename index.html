@@ -5,8 +5,7 @@
     
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js" type="text/javascript"></script>
 
     <script src="js/app.js" type="text/javascript"></script>
     <script src="js/rapportCtrl.js" type="text/javascript"></script>
@@ -22,7 +21,130 @@
 
     <div class="statuslinje"><div id="status-gfx"></div></div>
     
-    <div ng-view></div>
+<div ng-controller="rapportCtrl">
+    <div class="header">
+    
+    
+    <h1><a href="#/">Rapporter fra Nasjonal vegdatabank</a></h1>
+          
+    <form><fieldset>
+    
+        <div class="velg_objekttype">
+            <h2><span class="nr">1</span><label for="objekttype">Velg objekttype</label></h2>
+            <select id="objekttype" ng-model="a.objekttype" ng-change="setObjekttype()">
+                <option ng-repeat="objekttype in objekttyper">{{objekttype.navn}}</option>
+            </select>
+            
+            <div ng-controller="egenskapsfilterCtrl">
+                <h3><label for="ef-egenskapstype">Legg til egenskapsfilter</label> <span class="valgfritt">(valgfritt)</span></h3>
+                <select ng-model="ef.egenskapstype" ng-change="setEgenskapstype()" id="ef-egenskapstype">
+                    <option>Velg egenskapstype</option>
+                    <option ng-repeat="egenskapstype in egenskapstyper[a.objekttype] | filter:ef.filter | orderBy:'navn'">{{egenskapstype.navn}}</option>
+                </select>
+                
+                <select ng-if="ef.type" ng-model="ef.operator" ng-change="setOperator()" id="ef-operator">
+                    <option ng-repeat="operator in ef.operatorer[ef.type]">{{operator}}</option>
+                </select>
+
+                <ng-switch on="ef.type">
+                    <input ng-switch-when="Tekst" ng-model="ef.verdi" type="text" placeholder="Skriv inn tekst" id="ef-verdi">
+                    <input ng-switch-when="Tall" ng-model="ef.verdi" type="text" placeholder="Skriv inn tall" id="ef-verdi" smart-float>
+                    <input ng-switch-when="Dato" ng-model="ef.verdi" type="text" placeholder="YYYY-MM-DD" id="ef-verdi">
+                    <select ng-switch-when="ENUM" ng-model="ef.verdi" id="ef-verdi">
+                        <option value="">Velg verdi</option>
+                        <option ng-repeat="verdi in valg[a.objekttype+': '+ef.egenskapstype].verdier">{{verdi.navn}}</option>
+                    </select>
+                </ng-switch>
+                   
+                
+                <button ng-if="ef.verdi" ng-click="addEgenskapsfilter()">Legg til filter</button>
+                
+                
+                <ul class="filterliste">
+                    <li ng-repeat="filter in a.egenskapsfilter">{{filter.type}} {{filter.operator}} {{filter.verdi}} 
+                    <button ng-click="delEgenskapfilter($index)">Fjern</button></li>
+                </ul>
+
+            </div>
+        </div>
+        
+        
+        
+        
+        <div class="velg_rad">
+            <h2><span class="nr">2</span><label for="rad">Velg rad</label></h2>
+            <select id="rad" ng-model="a.rad" ng-change="setRad()">
+                <option ng-repeat="rad in rader">{{rad}}</option> 
+                <!--<option ng-repeat="egenskapstype in egenskapstyper[a.objekttype] | filter:{datatype:'ENUM'}">{{a.objekttype}}: {{egenskapstype.navn}}</option>-->
+            </select>
+            
+            <h3><label ng-if="valg[a.rad].rad2">Legg til undernivå <input type="checkbox" ng-model="a.rad2" ng-change="setRad2()"></label></h3>
+            
+                        
+            
+        </div>
+        
+
+        
+        <div class="velg_kolonne">
+            <h2><span class="nr">3</span><label for="kolonne">Velg kolonne</label></h2>
+            <select id="kolonne" ng-model="a.kolonne" ng-change="setKolonne()">
+                <option ng-repeat="kolonne in kolonner">{{kolonne}}</option> 
+                <option ng-repeat="egenskapstype in egenskapstyper[a.objekttype] | filter:kolonnefilter | orderBy:'navn'">{{a.objekttype}}: {{egenskapstype.navn}}</option>
+            </select>
+
+            <div ng-if="valg[a.kolonne].type == 'Tall'">
+                <h3><label for="intervall">Angi intervall for tall</label></h3>
+                <input type="text" placeholder="Eksempel: 3 5 9" id="intervall" ng-model="a.intervall">
+                <button ng-if="a.intervall" ng-click="setIntervall()" id="intervall_button">Aktiver</button>
+
+            </div>
+        </div>
+        
+
+        <div class="hent_resultat">
+            <button ng-click="getResultat('antallFunnet')" class="hent">Hent antall</button>
+            <button ng-click="getResultat('totalStrekningslengde')" ng-if="objekttyper[a.objekttype].lengde" class="hent">Hent lengde</button> 
+            <p class="progress"><img src="gfx/process-working.gif" alt=""> <span>{{antall}} / {{totalt}}</span></p>
+            <button class="eksporter" ng-click="eksportExcel()">Eksporter til Excel</button>
+        </div>
+        
+    </fieldset></form>
+    
+    </div>
+    
+    <nvdb-rapport></nvdb-rapport>
+    
+</div>
+
+
+<div class="header">
+        <div class="hva_er">
+            <h2><span class="nr">?</span>Hva er Nasjonal vegdatabank?</h2>
+            <p>
+                Nasjonal vegdatabank (NVDB) inneholder informasjon om det norske vegnettet, og er Statens vegvesens
+                offisielle inventarliste over eiendeler langs vegen.
+            </p>
+        </div>
+        
+        <div class="brukes_til">
+            <h2><span class="nr">!</span>Hvordan bruke rapportgeneratoren?</h2>
+            <p>
+                Bruk rapportgeneratoren til å finne antall eller lengde av det du er interessert i, fordelt på
+                område eller vegkategori.
+            </p>
+        </div>
+        
+        <div class="hent_resultat">
+            <p><a href="#/rapport" class="button">Lag ny rapport</a> eller ta utgangspunkt i rapportmalene nedenfor</p>
+        </div>
+
+    
+        <ul class="standardrapporter">
+            <li ng-repeat="rapport in standardrapporter"><a ng-href="{{rapport.url}}">{{rapport.tittel}}</a></li>
+        </ul>  
+
+</div>
 
 </body>
 </html>
